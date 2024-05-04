@@ -202,6 +202,7 @@ public class DockerClient {
         LaunchResult result;
         result = launch(launchEnv, false, "rm", "-f", "--volumes", containerId);
         if (result.getStatus() != 0) {
+            LOGGER.log(Level.WARNING, String.format("Failed to rm container '%s'.", containerId));
             throw new IOException(String.format("Failed to rm container '%s'.", containerId));
         }
     }
